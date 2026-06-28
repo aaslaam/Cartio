@@ -68,9 +68,9 @@ const Navbar = () => {
         </div>
       </div>
       {/* hamburger menu end */}
-
+    {/* nav end */}
     </div>
-      {/* nav end */}
+  
 
   )
 }
