@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className='flex items-center justify-between py-5 font-medium'>
 
       {/* nav start */}
-      <img src={assets.logo} alt="Logo" className='w-36' />
+      <Link to='/'><img src={assets.logo} alt="Logo" className='w-36' /></Link>
 
       {/* nav left side */}
       <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
