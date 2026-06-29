@@ -12,6 +12,7 @@ import Orders from './pages/Orders'
 import Product from './pages/Product'
 import Cart from './pages/Cart'
 import Nav from './components/nav'
+import Footer from './components/Footer'
 
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 
       </Routes>
+      <Footer />
     </div>
   )
 }
