@@ -11,11 +11,7 @@ const Title = ({ text1, text2 }) => {
         <p className='w-8 sm:w-12 h-[1px] sm:h-[2px] bg-gray-700'></p>
       </div>
 
-      {/* Subtext below */}
-      <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ab tempore
-        in praesentium quibusdam incidunt reprehenderit.
-      </p>
+      
     </div>
   )
 }
