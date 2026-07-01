@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { assets } from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
+import { ShopContext } from '../context/ShopContext'
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false)
+    const { SetShowSearch } = useContext(ShopContext)
   return (
     <div className='flex items-center justify-between py-5 font-medium'>
 
@@ -33,7 +35,7 @@ const Navbar = () => {
 
       {/* nav right side */}
       <div className='flex items-center gap-6'>
-        <img src={assets.search_icon} alt="search" className='w-5 cursor-pointer' />
+        <img onClick={() => SetShowSearch(true)} src={assets.search_icon} alt="search" className='w-5 cursor-pointer' />
         {/* profile dropdown start */}
         <div className='group relative'>
           <img src={assets.profile_icon} alt="profile" className='w-5 cursor-pointer' />
@@ -48,7 +50,7 @@ const Navbar = () => {
         {/* profile dropdown end */}
         <Link to='/cart' className='relative'>
           <img src={assets.Cart_icon} alt="cart" className='w-5 min-w-5 cursor-pointer' />
-          <p className='absolute right-[-5px] bottom-[-5px] bg-black text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center'>0</p>
+          <p className='absolute right-1.25px bottom-1.25px bg-black text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center'>0</p>
         </Link>
         <img onClick={() => setVisible(true)} src={assets.menu_icon} alt="menu" className='w-5 cursor-pointer sm:hidden' />
       </div>

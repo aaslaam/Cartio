@@ -1,16 +1,18 @@
 import React, { useContext, useMemo, useState } from 'react'
+
 import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets'
 import Title from '../components/Title'
 import ProductItem from '../components/ProductItem'
 
+
 const Collection = () => {
   const [showFilter, SetShowFilter] = useState(true)
-  const { products } = useContext(ShopContext)
+  const { products,Search,ShowSearch } = useContext(ShopContext)
   const [Category, SetCategory] = useState([])
   const [SubCategory, SetSubCategory] = useState([])
   const [SortType, SetSortType] = useState('relevant')
-
+{/* toggle category and subcategory */}
   const toggleCategory = (e)=>{
     if(Category.includes(e.target.value)){
       SetCategory(prev=>prev.filter((item)=>item!==e.target.value))
@@ -25,9 +27,13 @@ const Collection = () => {
       SetSubCategory(prev=>[...prev,e.target.value])
     }
   }
-
+{/* filter products */}
   const FilterProducts = useMemo(() => {
     let productsCopy = products.slice()
+    {/* filter by search, category and subcategory */}
+     if(ShowSearch && Search){
+      productsCopy = productsCopy.filter((item)=>item.name.toLowerCase().includes(Search.toLowerCase()))
+     }
     if(Category.length>0){
       productsCopy = productsCopy.filter((item)=>Category.includes(item.category))
     }
@@ -35,8 +41,8 @@ const Collection = () => {
       productsCopy = productsCopy.filter((item)=>SubCategory.includes(item.subCategory))
     }
     return productsCopy
-  }, [products, Category, SubCategory])
-
+  }, [products, Category, SubCategory, Search, ShowSearch])
+{/* function sort products */}
   const SortProducts = useMemo(() => {
     let productsCopy = FilterProducts.slice()
     switch (SortType) {
