@@ -9,6 +9,7 @@ const Collection = () => {
   const { products } = useContext(ShopContext)
   const [Category, SetCategory] = useState([])
   const [SubCategory, SetSubCategory] = useState([])
+  const [SortType, SetSortType] = useState('relevant')
 
   const toggleCategory = (e)=>{
     if(Category.includes(e.target.value)){
@@ -35,8 +36,18 @@ const Collection = () => {
     }
     return productsCopy
   }, [products, Category, SubCategory])
- console.log('Category:', Category)
-console.log('product category value:', products[0].category)
+
+  const SortProducts = useMemo(() => {
+    let productsCopy = FilterProducts.slice()
+    switch (SortType) {
+      case 'low-high':
+        return productsCopy.sort((a, b) => a.price - b.price)
+      case 'high-low':
+        return productsCopy.sort((a, b) => b.price - a.price)
+      default:
+        return productsCopy
+    }
+  }, [FilterProducts, SortType])
 
   return (
     <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
@@ -85,8 +96,8 @@ console.log('product category value:', products[0].category)
         <div className='flex  items-center justify-between text-base sm:text-2xl mb-4'>
           <Title text1={'ALL'} text2={'COLLECTIONS'} />
           {/* sort */}
-          <select className='border border-gray-300 text-sm py-2'>
-            <option value="relevent">Sort by: Relevent</option>
+          <select onChange={(e)=>{ SetSortType(e.target.value) }} className='border border-gray-300 text-sm py-2'>
+            <option value="relevant">Sort by: Relevent</option>
             <option value="high-low">Sort by: High-Low</option>
             <option value="low-high">Sort by: Low-High</option>
           </select>
@@ -94,7 +105,7 @@ console.log('product category value:', products[0].category)
 
         {/* all products */}
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
-          {FilterProducts.map((item, index) => (
+          {SortProducts.map((item, index) => (
             <ProductItem key={index} id={item._id} image={item.image} name={item.name} price={item.price} />
           ))}
         </div>
