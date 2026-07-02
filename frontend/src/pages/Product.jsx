@@ -8,10 +8,10 @@ import RelatedProducts from '../components/RelatedProducts'
 
 const Product = () => {
   const { productId } = useParams()
-  const { products, currency } = useContext(ShopContext)
+  const { products, currency, AddToCart } = useContext(ShopContext)
   const [productData, setProductData] = useState(false)
   const [image, setImage] = useState('')
-
+  const [quantity, setQuantity] = useState(1)
 
   const FetchProductData = async () => {
     {/* checks product id */}
@@ -25,9 +25,21 @@ const Product = () => {
     })
   }
 
+  const handleDecrease = () => {
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1))
+  }
+
+  const handleIncrease = () => {
+    setQuantity((prev) => prev + 1)
+  }
+
   useEffect(() => {
     FetchProductData()
   }, [productId, products])
+
+  useEffect(() => {
+    setQuantity(1)
+  }, [productId])
 
   return productData ? (
     <div className='border-t pt-10 transition-opacity ease-in duration-500 opacity-100'>
@@ -68,7 +80,25 @@ const Product = () => {
           <p className="mt-3 md:w-3/4 text-gray-400">{productData.description}</p>
         {/* product details end */}
 
-          <button className='bg-black text-white px-8 py-3 text-sm mt-5 active:bg-gray-800 cursor-pointer'>
+          {/* quantity picker */}
+          <div className='flex items-center gap-4 mt-5'>
+            <button
+              onClick={handleDecrease}
+              className='w-8 h-8 border border-gray-400 text-lg flex items-center justify-center cursor-pointer'
+            >
+              -
+            </button>
+            <p className='text-base w-6 text-center'>{quantity}</p>
+            <button
+              onClick={handleIncrease}
+              className='w-8 h-8 border border-gray-400 text-lg flex items-center justify-center cursor-pointer'
+            >
+              +
+            </button>
+          </div>
+          {/* quantity picker end */}
+
+          <button onClick={() => AddToCart(productData._id, quantity)} className='bg-black text-white px-8 py-3 text-sm mt-5 active:bg-gray-800 cursor-pointer'>
             ADD TO CART
           </button>
           <hr className='mt-8 w-4/5' />
