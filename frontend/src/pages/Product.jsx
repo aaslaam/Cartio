@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets'
 import ProductReviews from '../components/ProductReviews'
-
+import RelatedProducts from '../components/RelatedProducts'
 
 const Product = () => {
   const { productId } = useParams()
@@ -79,9 +79,12 @@ const Product = () => {
           </div>
         </div>
       </div>
-
       {/* desc and review sec */}
       <ProductReviews description={productData.description} />
+
+      {/* Related Products */}
+            <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
+
     </div>
   ) : <div className='opacity-0'></div>
 }
