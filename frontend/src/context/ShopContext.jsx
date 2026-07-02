@@ -22,6 +22,17 @@ const ShopContextProvider = (props) => {
         SetCartItems(CartData)
     }
 
+    {/* update quantity or remove item */}
+    const UpdateQuantity = async (ItemId, quantity) => {
+        let CartData = structuredClone(CartItems)
+        if (quantity <= 0) {
+            delete CartData[ItemId]
+        } else {
+            CartData[ItemId] = quantity
+        }
+        SetCartItems(CartData)
+    }
+
     {/* get count cart items */}
     const CartCount = () => {
         let count = 0
@@ -38,7 +49,7 @@ const ShopContextProvider = (props) => {
     }, [CartItems])
 
     const value = {
-        products, currency, delivery_fee, ShowSearch, SetShowSearch, Search, SetSearch, AddToCart, CartItems, CartCount
+        products, currency, delivery_fee, ShowSearch, SetShowSearch, Search, SetSearch, AddToCart, UpdateQuantity, CartItems, CartCount
     }
 
     return (
