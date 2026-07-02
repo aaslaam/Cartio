@@ -69,13 +69,13 @@ const Collection = () => {
           <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
           <div className='flex flex-col gap-2 font-light text-sm text-gray-700'>
             <p className='flex gap-2'>
-              <input type="checkbox" className='w-3 cursor-pointer' value={'Men'} onChange={toggleCategory}/>MEN
+              <input type="checkbox" className='w-3 cursor-pointer' value={'Ceramic'} onChange={toggleCategory}/>CERAMIC
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" className='w-3 cursor-pointer' value={'Women'} onChange={toggleCategory} />WOMEN
+              <input type="checkbox" className='w-3 cursor-pointer' value={'Porcelain'} onChange={toggleCategory} />PORCELAIN
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" className='w-3 cursor-pointer' value={'Kids'} onChange={toggleCategory} />KIDS
+              <input type="checkbox" className='w-3 cursor-pointer' value={'Melamine'} onChange={toggleCategory} />MELAMINE
             </p>
           </div>
         </div>
@@ -85,13 +85,13 @@ const Collection = () => {
           <p className='mb-3 text-sm font-medium'>TYPE</p>
           <div className='flex flex-col gap-2 font-light text-sm text-gray-700'>
             <p className='flex gap-2'>
-              <input type="checkbox" className='w-3 cursor-pointer' value={'Topwear'} onChange={toggleSubCategory}/>TOPWEAR
+              <input type="checkbox" className='w-3 cursor-pointer' value={'Dinner Plates'} onChange={toggleSubCategory}/>DINNER PLATES
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" className='w-3 cursor-pointer' value={'Bottomwear'} onChange={toggleSubCategory} />BOTTOMWEAR
+              <input type="checkbox" className='w-3 cursor-pointer' value={'Side Plates'} onChange={toggleSubCategory} />SIDE PLATES
             </p>
             <p className='flex gap-2'>
-              <input type="checkbox" className='w-3 cursor-pointer' value={'Winterwear'} onChange={toggleSubCategory} />WINTERWEAR
+              <input type="checkbox" className='w-3 cursor-pointer' value={'Serving Bowls'} onChange={toggleSubCategory} />SERVING BOWLS
             </p>
           </div>
         </div>

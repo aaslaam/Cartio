@@ -1,5 +1,8 @@
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { products } from "../assets/assets";
+
 
 export const ShopContext = createContext()
 
@@ -10,6 +13,7 @@ const ShopContextProvider = (props) => {
     const [ShowSearch, SetShowSearch] = useState(false)
     const [Search, SetSearch] = useState('')
     const [CartItems, SetCartItems] = useState({})
+    const Navigate = useNavigate()
 
     {/* add to cart */}
     const AddToCart = async (ItemId, quantity = 1) => {
@@ -61,7 +65,7 @@ const ShopContextProvider = (props) => {
     }, [CartItems])
 
     const value = {
-        products, currency, delivery_fee, ShowSearch, SetShowSearch, Search, SetSearch, AddToCart, UpdateQuantity, CartItems, CartCount, GetTotal
+        products, currency, delivery_fee, ShowSearch, SetShowSearch, Search, SetSearch, AddToCart, UpdateQuantity, CartItems, CartCount, GetTotal,Navigate
     }
 
     return (

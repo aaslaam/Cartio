@@ -6,7 +6,7 @@ import Tittle from '../components/Title'
 
 
 const CartTotal = () => {
-    const { currency, GetTotal, delivery_fee } = useContext(ShopContext)
+    const { currency, GetTotal, delivery_fee,Navigate } = useContext(ShopContext)
   return (
     <div className='w-full'>
         <div className="text-2xl">
@@ -26,7 +26,10 @@ const CartTotal = () => {
            <div className="flex justify-between">
                 <b>Total</b>
                 <b>{currency}{(GetTotal() + delivery_fee).toFixed(2)}</b>
-            </div> 
+            </div>
+            <div className="w-full text-end">
+                <button onClick={() => Navigate('/place-order')} className="bg-black text-white px-8 py-3 my-8 text-sm ">PROCEED TO CHECKOUT</button>
+                </div> 
         </div>
     </div>
   )
