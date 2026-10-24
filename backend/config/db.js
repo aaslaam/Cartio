@@ -1,13 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 export const ConnectDB = async () => {
-  try {
-
-    mongoose.connection.on("connected", () => {
-      console.log("DB Connected");
-    });
-  await mongoose.connect(`${process.env.MONGODB_URI}/Cartio-cluster`);
-  } catch (error) {
-    process.exit(1);
-  }
-};
+    try {
+        await mongoose.connect(process.env.MONGODB_URI)
+        console.log("DB connected")
+    } catch (error) {
+        console.error("DB connection failed:", error.message)
+    }
+}
