@@ -1,9 +1,9 @@
 import React, { useContext, useMemo, useState } from "react";
 
-import { ShopContext } from "../context/ShopContext";
+import { ShopContext } from "../context/shopcontext";
 import { assets } from "../assets/assets";
-import Title from "../components/Title";
-import ProductItem from "../components/ProductItem";
+import Title from "../components/title";
+import ProductItem from "../components/productitem";
 
 const Collection = () => {
   const [showFilter, SetShowFilter] = useState(true);

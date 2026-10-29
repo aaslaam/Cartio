@@ -1,7 +1,7 @@
 import React from "react";
-import Hero from "../components/Hero";
-import LatestCollections from "../components/LatestCollections";
-import BestSeller from "../components/BestSeller";
+import Hero from "../components/hero";
+import LatestCollections from "../components/latestcollections";
+import BestSeller from "../components/bestseller";
 import Policy from "../components/policy";
 
 const Home = () => {

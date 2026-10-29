@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ShopContext } from "../context/ShopContext";
-import Title from "../components/Title";
-import OrdersEmpty from "../components/OrdersEmpty";
+import { ShopContext } from "../context/shopcontext";
+import Title from "../components/title";
+import OrdersEmpty from "../components/ordersempty";
 import axios from "axios";
 import { toast } from "react-toastify";
 

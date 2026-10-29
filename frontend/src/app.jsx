@@ -2,18 +2,18 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./index.css";
 
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import Collection from "./pages/Collection";
-import About from "./pages/About";
-import Login from "./pages/Login";
-import PlaceOrder from "./pages/PlaceOrder";
-import Orders from "./pages/Orders";
-import Product from "./pages/Product";
+import Home from "./pages/home";
+import Contact from "./pages/contact";
+import Collection from "./pages/collection";
+import About from "./pages/about";
+import Login from "./pages/login";
+import PlaceOrder from "./pages/placeorder";
+import Orders from "./pages/orders";
+import Product from "./pages/product";
 import Cart from "./pages/cart";
 import Nav from "./components/nav";
 import Footer from "./components/footer";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./components/searchbar";
 
 const App = () => {
   return (

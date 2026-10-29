@@ -3,9 +3,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import { pinToAddress } from "india-pincode-finder";
-import Tittle from "../components/Title";
-import CartTotal from "../components/CartTotal";
-import { ShopContext } from "../context/ShopContext";
+import Tittle from "../components/title";
+import CartTotal from "../components/carttotal";
+import { ShopContext } from "../context/shopcontext";
 
 const PlaceOrder = () => {
   const [Method, SetMethod] = useState("cod");

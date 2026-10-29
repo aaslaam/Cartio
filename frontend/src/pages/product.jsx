@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { ShopContext } from "../context/ShopContext";
+import { ShopContext } from "../context/shopcontext";
 import { assets } from "../assets/assets";
-import ProductReviews from "../components/ProductReviews";
-import RelatedProducts from "../components/RelatedProducts";
+import ProductReviews from "../components/productreviews";
+import RelatedProducts from "../components/relatedproducts";
 
 const Product = () => {
   const { productId } = useParams();

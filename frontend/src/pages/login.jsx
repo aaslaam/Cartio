@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import { ShopContext } from "../context/ShopContext";
+import { ShopContext } from "../context/shopcontext";
 
 const Login = () => {
   const [CurrentState, SetCurrentState] = useState("Login");

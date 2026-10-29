@@ -56,7 +56,7 @@ import p_img52 from "./p_img52.png";
 
 import logo from "./cartio.png";
 import hero_img from "./hero_img.png";
-import Cart_icon from "./Cart_icon.png";
+import Cart_icon from "./cart_icon.png";
 import bin_icon from "./bin_icon.png";
 import dropdown_icon from "./dropdown_icon.png";
 import exchange_icon from "./exchange_icon.png";

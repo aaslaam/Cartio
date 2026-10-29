@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 
-import { ShopContext } from "../context/ShopContext";
-import Tittle from "../components/Title";
-import CartTotal from "../components/CartTotal";
+import { ShopContext } from "../context/shopcontext";
+import Tittle from "../components/title";
+import CartTotal from "../components/carttotal";
 
 const Cart = () => {
   const { currency, CartItems, CartCount, products, UpdateQuantity, Navigate } =
