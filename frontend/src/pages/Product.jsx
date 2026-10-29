@@ -1,108 +1,122 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-import { ShopContext } from '../context/ShopContext'
-import { assets } from '../assets/assets'
-import ProductReviews from '../components/ProductReviews'
-import RelatedProducts from '../components/RelatedProducts'
+import { ShopContext } from "../context/ShopContext";
+import { assets } from "../assets/assets";
+import ProductReviews from "../components/ProductReviews";
+import RelatedProducts from "../components/RelatedProducts";
 
 const Product = () => {
-  const { productId } = useParams()
-  const { products, currency, AddToCart } = useContext(ShopContext)
-  const [productData, setProductData] = useState(false)
-  const [image, setImage] = useState('')
-  const [quantity, setQuantity] = useState(1)
+  const { productId } = useParams();
+  const { products, currency, AddToCart } = useContext(ShopContext);
+  const [productData, setProductData] = useState(false);
+  const [image, setImage] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   const FetchProductData = async () => {
-    {/* checks product id */}
+    {
+      /* checks product id */
+    }
     products.map((item) => {
       if (item._id === productId) {
-        setProductData(item)
-        setImage(item.image[0])
-        return null
+        setProductData(item);
+        setImage(item.images?.[0]);
+        return null;
       }
-      return null
-    })
-  }
+      return null;
+    });
+  };
 
   const handleDecrease = () => {
-    setQuantity((prev) => (prev > 1 ? prev - 1 : 1))
-  }
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  };
 
   const handleIncrease = () => {
-    setQuantity((prev) => prev + 1)
-  }
+    setQuantity((prev) => prev + 1);
+  };
 
   useEffect(() => {
-    FetchProductData()
-  }, [productId, products])
+    FetchProductData();
+  }, [productId, products]);
 
   useEffect(() => {
-    setQuantity(1)
-  }, [productId])
+    setQuantity(1);
+  }, [productId]);
 
   return productData ? (
-    <div className='border-t pt-10 transition-opacity ease-in duration-500 opacity-100'>
+    <div className="border-t pt-10 transition-opacity ease-in duration-500 opacity-100">
       {/* product data */}
-      <div className='flex gap-12 sm:gap-12 flex-col sm:flex-row'>
+      <div className="flex gap-12 sm:gap-12 flex-col sm:flex-row">
         {/* product img */}
-        <div className='flex-1 flex flex-col-reverse gap-3 sm:flex-row'>
-          <div className='flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full'>
-            {productData.image.map((item, index) => (
+        <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
+          <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
+            {productData.images?.map((item, index) => (
               <img
                 onClick={() => setImage(item)}
                 src={item}
                 key={index}
-                className='w-[24%] sm:w-full sm:mb-3 shrink-0 cursor-pointer'
+                className="w-[24%] sm:w-full sm:mb-3 shrink-0 cursor-pointer"
                 alt={productData.name}
               />
             ))}
           </div>
-          <div className='w-full sm:w-[80%]'>
-            <img className='w-full h-auto' src={image} alt={productData.name} />
+          <div className="w-full sm:w-[80%]">
+            <img className="w-full h-auto" src={image} alt={productData.name} />
           </div>
         </div>
         {/* product details */}
-        <div className='flex-1'>
-          <h1 className='text-2xl mt-2 font-medium'>{productData.name}</h1>
+        <div className="flex-1">
+          <h1 className="text-2xl mt-2 font-medium">{productData.name}</h1>
           {/* product rating */}
 
-          <div className='flex items-center gap-1 mt-2'>
-            <img src={assets.star_icon} alt="star_icon" className="w-3 5" />
-            <img src={assets.star_icon} alt="star_icon" className="w-3 5" />
-            <img src={assets.star_icon} alt="star_icon" className="w-3 5" />
-            <img src={assets.star_icon} alt="star_icon" className="w-3 5" />
-            <img src={assets.star_dull_icon} alt="star_dull_icon" className="w-3 5" />
+          <div className="flex items-center gap-1 mt-2">
+            <img src={assets.star_icon} alt="star_icon" className="w-3.5" />
+            <img src={assets.star_icon} alt="star_icon" className="w-3.5" />
+            <img src={assets.star_icon} alt="star_icon" className="w-3.5" />
+            <img src={assets.star_icon} alt="star_icon" className="w-3.5" />
+            <img
+              src={assets.star_dull_icon}
+              alt="star_dull_icon"
+              className="w-3.5"
+            />
             <p className="pl-2">(122)</p>
             {/* product rating end */}
           </div>
-          <p className="mt-5 font-medium 3xl">{currency}{productData.price.toFixed(2)}</p>
-          <p className="mt-3 md:w-3/4 text-gray-400">{productData.description}</p>
-        {/* product details end */}
+          <p className="mt-5 font-medium text-3xl">
+            {currency}
+            {productData.price.toFixed(2)}
+          </p>
+          <p className="mt-3 md:w-3/4 text-gray-400">
+            {productData.description}
+          </p>
+          {/* product details end */}
 
           {/* quantity picker */}
-          <div className='flex items-center gap-4 mt-5'>
+          <div className="flex items-center gap-4 mt-5">
             <button
               onClick={handleDecrease}
-              className='w-8 h-8 border border-gray-400 text-lg flex items-center justify-center cursor-pointer'
+              className="w-8 h-8 border border-gray-400 text-lg flex items-center justify-center cursor-pointer"
             >
               -
             </button>
-            <p className='text-base w-6 text-center'>{quantity}</p>
+            <p className="text-base w-6 text-center">{quantity}</p>
             <button
               onClick={handleIncrease}
-              className='w-8 h-8 border border-gray-400 text-lg flex items-center justify-center cursor-pointer'
+              className="w-8 h-8 border border-gray-400 text-lg flex items-center justify-center cursor-pointer"
             >
               +
             </button>
           </div>
           {/* quantity picker end */}
 
-          <button onClick={() => AddToCart(productData._id, quantity)} className='bg-black text-white px-8 py-3 text-sm mt-5 active:bg-gray-800 cursor-pointer'>
+          <button
+            onClick={() => AddToCart(productData._id, quantity)}
+            className="bg-black text-white px-8 py-3 text-sm mt-5 active:bg-gray-800 cursor-pointer"
+          >
             ADD TO CART
           </button>
-          <hr className='mt-8 w-4/5' />
-          <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
+          <hr className="mt-8 w-4/5" />
+          <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
             <p>100% original product</p>
             <p>COD is available</p>
             <p>Easy return and exchange</p>
@@ -113,10 +127,14 @@ const Product = () => {
       <ProductReviews description={productData.description} />
 
       {/* Related Products */}
-            <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
-
+      <RelatedProducts
+        category={productData.category}
+        subCategory={productData.subCategory}
+      />
     </div>
-  ) : <div className='opacity-0'></div>
-}
+  ) : (
+    <div className="opacity-0"></div>
+  );
+};
 
-export default Product
+export default Product;

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="240" viewBox="0 0 640 240" role="img" aria-label="Cartio logo B">
+  <rect width="640" height="240" fill="#FFFFFF"/>
+  <g transform="translate(94 64) scale(1.1667)">
+    <circle cx="48" cy="48" r="48" fill="#0B6E57"/>
+    <path d="M22 28 H31 L38 58 H64 L70 38 H34" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="41" cy="69" r="4.5" fill="#FFD166"/>
+    <circle cx="62" cy="69" r="4.5" fill="#FFD166"/>
+  </g>
+  <text x="232" y="146" font-family="'DM Sans', Arial, sans-serif" font-size="80" font-weight="700" letter-spacing="-3" fill="#0B2B25">cartio</text>
+</svg>

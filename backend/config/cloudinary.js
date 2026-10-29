@@ -1,4 +1,5 @@
-// server/lib/cloudinary.js
+// cloudinary conf
+
 import { v2 as cloudinary } from "cloudinary";
 
 const connectCloudinary = async () => {

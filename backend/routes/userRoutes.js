@@ -1,8 +1,8 @@
 import express from "express";
 
 import {
-  userLogin,
   userSignUp,
+  userLogin,
   adminLogin,
 } from "../controllers/userController.js";
 

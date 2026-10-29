@@ -20,10 +20,9 @@ productRouter.post(
     { name: "image4", maxCount: 1 },
   ]),
   adminAuth,
-  addProduct
-  
+  addProduct,
 );
-productRouter.post("/remove",adminAuth, removeProduct);
+productRouter.post("/remove", adminAuth, removeProduct);
 productRouter.get("/list", listProduct);
 productRouter.post("/single", singleProduct);
 

@@ -7,10 +7,10 @@ const addProduct = async (req, res) => {
   try {
     const { name, price, category, subCategory, bestseller, description } =
       req.body;
-    const image1 = req.files.image1 && req.files.image1[0];
-    const image2 = req.files.image2 && req.files.image2[0];
-    const image3 = req.files.image3 && req.files.image3[0];
-    const image4 = req.files.image4 && req.files.image4[0];
+    const image1 = req.files?.image1?.[0];
+    const image2 = req.files?.image2?.[0];
+    const image3 = req.files?.image3?.[0];
+    const image4 = req.files?.image4?.[0];
 
     const images = [image1, image2, image3, image4].filter(
       (item) => item !== undefined,
@@ -31,14 +31,14 @@ const addProduct = async (req, res) => {
       subCategory,
       bestseller: bestseller === "true" ? true : false,
       date: Date.now(),
-      image: imagesUrl,
+      images: imagesUrl,
     };
     const product = new productModel(productData);
     await product.save();
-    res.json({ success: true, msg: "product added" });
+    res.json({ success: true, message: "Product Added" });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, msg: error.message });
+    res.json({ success: false, message: error.message });
   }
 };
 
@@ -49,7 +49,7 @@ const listProduct = async (req, res) => {
     res.json({ success: true, products });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, msg: error.message });
+    res.json({ success: false, message: error.message });
   }
 };
 
@@ -57,10 +57,10 @@ const listProduct = async (req, res) => {
 const removeProduct = async (req, res) => {
   try {
     await productModel.findByIdAndDelete(req.body.id);
-    res.json({ success: true, msg: "Prod Deleted" });
+    res.json({ success: true, message: "Product Removed" });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, msg: error.message });
+    res.json({ success: false, message: error.message });
   }
 };
 
@@ -72,13 +72,13 @@ const singleProduct = async (req, res) => {
     const product = await productModel.findById(productId);
 
     if (!product) {
-      return res.json({ success: false, msg: "Product not found" });
+      return res.json({ success: false, message: "Product not found" });
     }
 
     res.json({ success: true, product });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, msg: error.message });
+    res.json({ success: false, message: error.message });
   }
 };
 

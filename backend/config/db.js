@@ -1,3 +1,5 @@
+// mongodb conf
+
 import mongoose from "mongoose";
 
 export const ConnectDB = async () => {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap");
 @import "tailwindcss";
 
 a.active hr {
@@ -6,7 +6,7 @@ a.active hr {
 }
 
 * {
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 .prata-regular {
@@ -20,8 +20,8 @@ a.active hr {
   display: none;
 }
 /* highlights the current page in hamburger menu */
-@media (max-width:640px){
-  a.active{
+@media (max-width: 640px) {
+  a.active {
     background-color: black;
     color: #fff;
   }

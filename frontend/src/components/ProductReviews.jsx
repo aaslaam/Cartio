@@ -1,64 +1,78 @@
-import React, { useState } from 'react'
-import { assets } from '../assets/assets'
+import React, { useState } from "react";
+import { assets } from "../assets/assets";
 
 const ProductReviews = ({ description }) => {
-  const [activeTab, setActiveTab] = useState('description')
-  const [reviews, setReviews] = useState([])
-  const [reviewForm, setReviewForm] = useState({ name: '', rating: 0, comment: '' })
+  const [activeTab, setActiveTab] = useState("description");
+  const [reviews, setReviews] = useState([]);
+  const [reviewForm, setReviewForm] = useState({
+    name: "",
+    rating: 0,
+    comment: "",
+  });
 
   const handleReviewChange = (e) => {
-    const { name, value } = e.target
-    setReviewForm((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setReviewForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleStarClick = (rating) => {
-    setReviewForm((prev) => ({ ...prev, rating }))
-  }
+    setReviewForm((prev) => ({ ...prev, rating }));
+  };
 
   const handleReviewSubmit = (e) => {
-    e.preventDefault()
-    if (!reviewForm.name.trim() || !reviewForm.comment.trim() || reviewForm.rating === 0) return
+    e.preventDefault();
+    if (
+      !reviewForm.name.trim() ||
+      !reviewForm.comment.trim() ||
+      reviewForm.rating === 0
+    )
+      return;
 
     const newReview = {
       id: Date.now(),
       name: reviewForm.name,
       rating: Number(reviewForm.rating),
       comment: reviewForm.comment,
-      date: new Date().toLocaleDateString()
-    }
+      date: new Date().toLocaleDateString(),
+    };
 
-    setReviews((prev) => [newReview, ...prev])
-    setReviewForm({ name: '', rating: 0, comment: '' })
-  }
+    setReviews((prev) => [newReview, ...prev]);
+    setReviewForm({ name: "", rating: 0, comment: "" });
+  };
 
   return (
-    <div className='mt-20'>
+    <div className="mt-20">
       <div className="flex">
         <b
-          onClick={() => setActiveTab('description')}
-          className={`border px-5 py-3 text-sm cursor-pointer ${activeTab === 'description' ? 'bg-gray-100' : ''}`}
+          onClick={() => setActiveTab("description")}
+          className={`border px-5 py-3 text-sm cursor-pointer ${activeTab === "description" ? "bg-gray-100" : ""}`}
         >
           Description
         </b>
         <p
-          onClick={() => setActiveTab('reviews')}
-          className={`border px-5 py-3 text-sm cursor-pointer ${activeTab === 'reviews' ? 'bg-gray-100' : ''}`}
+          onClick={() => setActiveTab("reviews")}
+          className={`border px-5 py-3 text-sm cursor-pointer ${activeTab === "reviews" ? "bg-gray-100" : ""}`}
         >
           Reviews ({reviews.length})
         </p>
       </div>
 
-      {activeTab === 'description' ? (
+      {activeTab === "description" ? (
         <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
           <p>{description}</p>
-          <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>
+            lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
         </div>
       ) : (
         <div className="flex flex-col gap-6 border px-6 py-6 text-sm">
           {/* review list */}
           <div className="flex flex-col">
             {reviews.length === 0 ? (
-              <p className="text-gray-400">No reviews yet. Be the first to review this product.</p>
+              <p className="text-gray-400">
+                No reviews yet. Be the first to review this product.
+              </p>
             ) : (
               reviews.map((review) => (
                 <div key={review.id} className="mb-5">
@@ -70,7 +84,11 @@ const ProductReviews = ({ description }) => {
                     {Array.from({ length: 5 }).map((_, i) => (
                       <img
                         key={i}
-                        src={i < review.rating ? assets.star_icon : assets.star_dull_icon}
+                        src={
+                          i < review.rating
+                            ? assets.star_icon
+                            : assets.star_dull_icon
+                        }
                         alt="star"
                         className="w-3 5"
                       />
@@ -83,7 +101,10 @@ const ProductReviews = ({ description }) => {
           </div>
 
           {/* review form */}
-          <form onSubmit={handleReviewSubmit} className="flex flex-col gap-3 border-t pt-5">
+          <form
+            onSubmit={handleReviewSubmit}
+            className="flex flex-col gap-3 border-t pt-5"
+          >
             <p className="font-medium">Write a review</p>
             <input
               type="text"
@@ -98,8 +119,8 @@ const ProductReviews = ({ description }) => {
             {/* clickable star rating - only click sets fill, no hover effect */}
             <div className="flex items-center gap-1">
               {Array.from({ length: 5 }).map((_, i) => {
-                const starValue = i + 1
-                const filled = starValue <= reviewForm.rating
+                const starValue = i + 1;
+                const filled = starValue <= reviewForm.rating;
                 return (
                   <img
                     key={i}
@@ -108,7 +129,7 @@ const ProductReviews = ({ description }) => {
                     onClick={() => handleStarClick(starValue)}
                     className="w-5 cursor-pointer"
                   />
-                )
+                );
               })}
             </div>
 
@@ -131,7 +152,7 @@ const ProductReviews = ({ description }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ProductReviews
+export default ProductReviews;
