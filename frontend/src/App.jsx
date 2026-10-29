@@ -10,9 +10,9 @@ import Login from "./pages/Login";
 import PlaceOrder from "./pages/PlaceOrder";
 import Orders from "./pages/Orders";
 import Product from "./pages/Product";
-import Cart from "./pages/Cart";
+import Cart from "./pages/cart";
 import Nav from "./components/nav";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
 import SearchBar from "./components/SearchBar";
 
 const App = () => {
